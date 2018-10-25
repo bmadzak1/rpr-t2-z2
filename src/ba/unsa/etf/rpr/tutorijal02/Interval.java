@@ -48,7 +48,64 @@ public class Interval {
     }
 
     public Interval intersect(Interval interval){
-        return new Interval();
+        double prvaVrijednost = 0, drugaVrijednost = 0;
+        boolean prvaUkljucena = false, drugaUkljucena = false;
+
+        if(pocetnaTacka < interval.pocetnaTacka)
+        {
+            prvaVrijednost = interval.pocetnaTacka;
+            if(interval.pripadaPocetna)
+                prvaUkljucena = true;
+            else
+                prvaUkljucena = false;
+        }
+
+        if(interval.pocetnaTacka < pocetnaTacka)
+        {
+            prvaVrijednost = pocetnaTacka;
+            if(pripadaPocetna)
+                prvaUkljucena = true;
+            else
+                prvaUkljucena = false;
+        }
+
+        if(pocetnaTacka == interval.pocetnaTacka)
+        {
+            prvaVrijednost = pocetnaTacka;
+            if(pripadaPocetna && interval.pripadaPocetna)
+                prvaUkljucena = true;
+            else
+                prvaUkljucena = false;
+        }
+
+        if(krajnjaTacka < interval.krajnjaTacka)
+        {
+            drugaVrijednost = krajnjaTacka;
+            if(pripadaKrajnja)
+                drugaUkljucena = true;
+            else
+                drugaUkljucena = false;
+        }
+
+        if(interval.krajnjaTacka < krajnjaTacka)
+        {
+            drugaVrijednost = interval.krajnjaTacka;
+            if(interval.pripadaKrajnja)
+                drugaUkljucena = true;
+            else
+                drugaUkljucena = false;
+        }
+
+        if(krajnjaTacka == interval.krajnjaTacka)
+        {
+            drugaVrijednost = krajnjaTacka;
+            if(pripadaKrajnja && interval.pripadaKrajnja)
+                drugaUkljucena = true;
+            else
+                drugaUkljucena = false;
+        }
+
+        return new Interval(prvaVrijednost, drugaVrijednost, prvaUkljucena, drugaUkljucena);
     }
 
     public static Interval intersect(Interval interval1, Interval interval2){
