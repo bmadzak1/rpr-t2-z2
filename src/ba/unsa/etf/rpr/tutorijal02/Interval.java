@@ -109,7 +109,64 @@ public class Interval {
     }
 
     public static Interval intersect(Interval interval1, Interval interval2){
-        return new Interval();
+        double prvaVrijednost = 0, drugaVrijednost = 0;
+        boolean prvaUkljucena = false, drugaUkljucena = false;
+
+        if(interval1.pocetnaTacka < interval2.pocetnaTacka)
+        {
+            prvaVrijednost = interval2.pocetnaTacka;
+            if(interval2.pripadaPocetna)
+                prvaUkljucena = true;
+            else
+                prvaUkljucena = false;
+        }
+
+        if(interval2.pocetnaTacka < interval1.pocetnaTacka)
+        {
+            prvaVrijednost = interval1.pocetnaTacka;
+            if(interval1.pripadaPocetna)
+                prvaUkljucena = true;
+            else
+                prvaUkljucena = false;
+        }
+
+        if(interval1.pocetnaTacka == interval2.pocetnaTacka)
+        {
+            prvaVrijednost = interval1.pocetnaTacka;
+            if(interval1.pripadaPocetna && interval2.pripadaPocetna)
+                prvaUkljucena = true;
+            else
+                prvaUkljucena = false;
+        }
+
+        if(interval1.krajnjaTacka < interval2.krajnjaTacka)
+        {
+            drugaVrijednost = interval1.krajnjaTacka;
+            if(interval1.pripadaKrajnja)
+                drugaUkljucena = true;
+            else
+                drugaUkljucena = false;
+        }
+
+        if(interval2.krajnjaTacka < interval1.krajnjaTacka)
+        {
+            drugaVrijednost = interval2.krajnjaTacka;
+            if(interval2.pripadaKrajnja)
+                drugaUkljucena = true;
+            else
+                drugaUkljucena = false;
+        }
+
+        if(interval1.krajnjaTacka == interval2.krajnjaTacka)
+        {
+            drugaVrijednost = interval1.krajnjaTacka;
+            if(interval1.pripadaKrajnja && interval2.pripadaKrajnja)
+                drugaUkljucena = true;
+            else
+                drugaUkljucena = false;
+        }
+
+        return new Interval(prvaVrijednost, drugaVrijednost, prvaUkljucena, drugaUkljucena);
     }
 
     @Override
