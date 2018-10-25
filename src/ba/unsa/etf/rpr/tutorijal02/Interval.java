@@ -54,4 +54,24 @@ public class Interval {
     public static Interval intersect(Interval interval1, Interval interval2){
         return new Interval();
     }
+
+    @Override
+    public String toString(){
+        if(pocetnaTacka != 0 && krajnjaTacka != 0) {
+            String string = new String();
+            if (pripadaPocetna)
+                string += "[";
+            else
+                string += "(";
+            string += pocetnaTacka;
+            string += ",";
+            string += krajnjaTacka;
+            if (pripadaKrajnja)
+                string += "]";
+            else
+                string += ")";
+            return string;
+        }
+        else return "()";
+    }
 }
