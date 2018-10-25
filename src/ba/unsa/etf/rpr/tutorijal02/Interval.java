@@ -74,4 +74,13 @@ public class Interval {
         }
         else return "()";
     }
+
+    @Override
+    public boolean equals(Object o){
+        Interval interval = (Interval) o;
+        if(pocetnaTacka == ((Interval) o).pocetnaTacka && krajnjaTacka == ((Interval) o).krajnjaTacka)
+            if(pripadaPocetna == ((Interval) o).pripadaPocetna && pripadaKrajnja == ((Interval) o).pripadaKrajnja)
+                return true;
+        return  false;
+    }
 }
