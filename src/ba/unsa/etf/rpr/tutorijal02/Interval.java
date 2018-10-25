@@ -5,9 +5,9 @@ public class Interval {
     double pocetnaTacka, krajnjaTacka;
     boolean pripadaPocetna, pripadaKrajnja;
 
-    Interval(double pocetnaTacka, double krajnjaTacka, boolean pripadaPocetna, boolean pripadaKrajnja) {
-        if (krajnjaTacka > pocetnaTacka) {
-
+    Interval(double pocetnaTacka, double krajnjaTacka, boolean pripadaPocetna, boolean pripadaKrajnja) throws IllegalArgumentException {
+        if (krajnjaTacka < pocetnaTacka) {
+            throw new IllegalArgumentException();
         }
 
         this.pocetnaTacka = pocetnaTacka;
